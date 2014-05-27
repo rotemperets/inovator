@@ -7,3 +7,44 @@
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
 	display: none !important;
 }
+
+.inventionsList{
+    list-style: none;
+}
+.inventionsList li{
+    overflow: hidden;
+    width: 12.5%;
+    font-size: 8px;
+    float: left;
+    height: 115px;
+    padding: 10px;
+    line-height: 1.4;
+    text-align: center;
+    border: 1px solid #fff;
+    background-color: #f9f9f9;
+    box-sizing: border-box;
+    color: #333;
+}
+
+.inventionsList .inventor, .inventionsList .title {
+    position: relative;
+    display: inline-block;
+    margin-top: 5px;
+    font-weight: bold;
+}
+.inventionsList .title{
+    margin-top: 10px;
+}
+.inventionsList .name{
+    position: relative;
+    display: inline-block;
+    margin-top: 10px;
+}
+
+.inventionsList .description{
+    position: relative;
+    display: inline-block;
+    margin-top: 10px;
+    text-overflow: ellipsis;
+    cursor: pointer;
+}

@@ -12,11 +12,20 @@
 	</div>
 	<small>
 		<em class="text-muted">
-			Posted on
+			Invented on
 			<span data-ng-bind="article.created | date:'mediumDate'"></span>
 			by
 			<span data-ng-bind="article.user.displayName"></span>
 		</em>
 	</small>
+    <br/>
+    <br/>
+    Current Members:
+    <ul>
+        <li ng-repeat="member in article.members">
+            {{member.displayName}}
+    </ul>
+    <br/>
+    Content:
 	<p class="lead" data-ng-bind="article.content"></p>
 </section>

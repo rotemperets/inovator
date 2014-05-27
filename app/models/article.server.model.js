@@ -28,7 +28,12 @@ var ArticleSchema = new Schema({
 	user: {
 		type: Schema.ObjectId,
 		ref: 'User'
-	}
+	},
+    members: {
+        type: Array,
+        default: []
+    }
+
 });
 
 mongoose.model('Article', ArticleSchema);

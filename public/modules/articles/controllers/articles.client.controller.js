@@ -7,7 +7,8 @@ angular.module('articles').controller('ArticlesController', ['$scope', '$statePa
 		$scope.create = function() {
 			var article = new Articles({
 				title: this.title,
-				content: this.content
+				content: this.content,
+                members: [$scope.authentication.user]
 			});
 			article.$save(function(response) {
 				$location.path('articles/' + response._id);
@@ -30,7 +31,7 @@ angular.module('articles').controller('ArticlesController', ['$scope', '$statePa
 				}
 			} else {
 				$scope.article.$remove(function() {
-					$location.path('articles');
+					$location.path('/');
 				});
 			}
 		};
