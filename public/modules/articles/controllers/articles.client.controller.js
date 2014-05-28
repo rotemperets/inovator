@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('articles').controller('ArticlesController', ['$scope', '$stateParams', '$location', 'Authentication', 'Articles',
-	function($scope, $stateParams, $location, Authentication, Articles) {
+angular.module('articles').controller('ArticlesController', ['$scope', '$stateParams', '$location', 'Authentication', 'Articles','$http',
+	function($scope, $stateParams, $location, Authentication, Articles, $http) {
 		$scope.authentication = Authentication;
 
 		$scope.create = function() {
@@ -55,5 +55,17 @@ angular.module('articles').controller('ArticlesController', ['$scope', '$statePa
 				articleId: $stateParams.articleId
 			});
 		};
+
+    /*    $scope.email = function() {
+            $http.post('articles/' + $scope.article._id + '/email', {
+                name: 'maor'
+            }).success(function(data, status, headers, config) {
+                if(data.success){
+                    alert('yay');
+                }else {
+                    alert('crap');
+                }
+            });
+        };*/
 	}
 ]);

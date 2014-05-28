@@ -1,4 +1,4 @@
-<section data-ng-controller="ArticlesController" data-ng-init="findOne()">
+<section class="col-xs-offset-2 col-xs-8 col-md-offset-2 col-md-8" data-ng-controller="ArticlesController" data-ng-init="findOne()">
 	<div class="page-header">
 		<h1 data-ng-bind="article.title"></h1>
 	</div>
@@ -23,7 +23,7 @@
     Current Members:
     <ul>
         <li ng-repeat="member in article.members">
-            {{member.displayName}}
+            <a href="/#!/email?article={{article._id}}}}">{{member.displayName}}</a>
     </ul>
     <br/>
     Content:

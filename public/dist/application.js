@@ -44,16 +44,15 @@ ApplicationConfiguration.registerModule('articles');'use strict';
 // Use Applicaion configuration module to register a new module
 ApplicationConfiguration.registerModule('core');'use strict';
 // Use Applicaion configuration module to register a new module
-ApplicationConfiguration.registerModule('users');'use strict';
+ApplicationConfiguration.registerModule('users');'use strict';  /*
 // Configuring the Articles module
-angular.module('articles').run([
-  'Menus',
-  function (Menus) {
-    // Set top bar menu items
-    Menus.addMenuItem('topbar', 'Inventions', 'inventions', 'dropdown', '/articles(/create)?');
-    Menus.addSubMenuItem('topbar', 'inventions', 'New Inventions', 'articles/create');
-  }
-]);'use strict';
+angular.module('articles').run(['Menus',
+    function(Menus) {
+        // Set top bar menu items
+        Menus.addMenuItem('topbar', 'Inventions', 'articles', 'dropdown', '/articles(/create)?');
+        Menus.addSubMenuItem('topbar', 'articles', 'New Invention', 'articles/create');
+    }
+]);*/'use strict';
 // Setting up route
 angular.module('articles').config([
   '$stateProvider',
@@ -85,7 +84,8 @@ angular.module('articles').controller('ArticlesController', [
     $scope.create = function () {
       var article = new Articles({
           title: this.title,
-          content: this.content
+          content: this.content,
+          members: [$scope.authentication.user]
         });
       article.$save(function (response) {
         $location.path('articles/' + response._id);
@@ -105,7 +105,7 @@ angular.module('articles').controller('ArticlesController', [
         }
       } else {
         $scope.article.$remove(function () {
-          $location.path('articles');
+          $location.path('/');
         });
       }
     };
@@ -165,8 +165,14 @@ angular.module('core').controller('HeaderController', [
 ]);'use strict';
 angular.module('core').controller('HomeController', [
   '$scope',
+  '$location',
   'Authentication',
-  function ($scope, Authentication) {
+  'Articles',
+  function ($scope, $location, Authentication, Articles) {
+    $scope.inventions = Articles.query();
+    $scope.go = function (path, articleId) {
+      $location.path(path + '/' + articleId);
+    };
     // This provides Authentication context.
     $scope.authentication = Authentication;
   }

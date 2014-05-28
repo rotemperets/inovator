@@ -6,7 +6,21 @@
 var mongoose = require('mongoose'),
 	passport = require('passport'),
 	User = mongoose.model('User'),
+    nodemailer = require('nodemailer'),
 	_ = require('lodash');
+
+
+// create reusable transport method (opens pool of SMTP connections)
+var transport = nodemailer.createTransport();
+
+var transport = nodemailer.createTransport('SMTP', {
+    service: 'Gmail',
+    auth: {
+        user: 'maorfrank@gmail.com',
+        pass: 'bimba1234'
+    }
+});
+
 
 /**
  * Get the error message from error object
@@ -373,4 +387,32 @@ exports.removeOAuthProvider = function(req, res, next) {
 			}
 		});
 	}
+};
+
+
+/**
+ * Article authorization middleware
+ */
+exports.email = function(req, res, next) {
+    var mailOptions = {
+        from: req.body.user.displayName + '  <' + req.body.user.email + '>', // sender address
+        to: 'maorfrank@gmail.com', // list of receivers
+        subject: 'Hello ✔', // Subject line
+        text: 'Hello world ✔', // plaintext body
+        html: '<b>Hello world ✔</b>' // html body
+    };
+    res.setHeader('Content-Type', 'application/json');
+
+    transport.sendMail(mailOptions, function(error, responseStatus){
+        if(!error){
+            res.write(JSON.stringify({success: true}));
+            res.end();
+        }
+        else{
+            res.write(JSON.stringify({error: error}));
+            res.end();
+        }
+    });
+
+
 };

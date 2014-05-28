@@ -20,6 +20,10 @@ angular.module('articles').config(['$stateProvider',
 		state('editArticle', {
 			url: '/articles/:articleId/edit',
 			templateUrl: 'modules/articles/views/edit-article.client.view.html'
-		});
+		}).
+        state('emailArticle', {
+            url: '/articles/:articleId/email',
+            templateUrl: 'modules/articles/views/email-article.client.view.html'
+        });
 	}
 ]);

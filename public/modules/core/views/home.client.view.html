@@ -2,28 +2,26 @@
 	<div class="jumbotron text-center">
         <div class="row">
             <span class="lead">
-                Innovation Week
+                Innovation week board
             </span>
-            <button ng-click="go('/articles', 'create')" class="btn pull-right ">new</button>
+            <button ng-click="go('/articles', 'create')" class="btn pull-right " data-ng-show="authentication.user">New</button>
         </div>
 
 		<div class="row">
-			<div class="col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 col-xs-12">
+			<div class="">
                 <ul class = "inventionsList">
-                    <li  ng-repeat="invention in inventions">
-                            <span class="inventor">inventor:</span>
-                            <span  class="name">{{invention.user.displayName}}</span>
-                            </br>
-                            <span class="title">Title:</span>
-                            <span ng-click="go('/articles', invention._id)" class="description">{{invention.title}}</span>
+                    <li ng-click="go('/articles', invention._id)" ng-repeat="invention in inventions">
+                        <span class="name">{{invention.user.displayName}}</span>
+                        </br>
+                        <span class="description">{{invention.title}}</span>
+                        </br>
+                        </br>
+                        </br>
+                        <span class="description">{{invention.content}}</span>
                     </li>
                 </ul>
 
             </div>
 		</div>
-		<br>
-
-	<br>Enjoy &amp; Keep Us Updated,
-	<br>The Innovation Team.
-        </div>
+   </div>
 </section>
