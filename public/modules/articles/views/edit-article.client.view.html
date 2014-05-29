@@ -24,6 +24,30 @@
 					<strong data-ng-bind="error"></strong>
 				</div>
 			</fieldset>
+
+            <ul>
+                <li data-ng-repeat="member in article.members">
+                    <a href="/#!/email?article={{article._id}}">{{member.displayName}}</a>
+            </ul>
+            <br/>
+            <span>Add Member</span>
+            <br/>
+           <!--<select ng-model="article.members" ng-options="user.displayName for user in users"> </select>-->
+            <!-- Split button -->
+            <div class="btn-group" dropdown>
+                <button type="button" class="btn btn-danger">Select</button>
+                <button type="button" class="btn btn-danger dropdown-toggle">
+                    <span class="caret"></span>
+                    <span class="sr-only">Split button!</span>
+                </button>
+                <ul class="dropdown-menu" role="menu">
+                    <li data-ng-repeat="user in users | filter: filterMeOut">
+                        <a href="#">{{user.displayName}}</a>
+                </ul>
+            </div>
+
+
+
 		</form>
 	</div>
 </section>

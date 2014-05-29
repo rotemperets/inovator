@@ -247,6 +247,22 @@ exports.userByID = function(req, res, next, id) {
 		req.profile = user;
 		next();
 	});
+
+};
+
+/**
+ * User middleware
+ */
+exports.allUsers = function(req, res) {
+    User.find().populate('user').exec(function(err, users) {
+        if (err) {
+            return res.send(400, {
+                message: getErrorMessage(err)
+            });
+        } else {
+            res.jsonp(users);
+        }
+    });
 };
 
 /**
@@ -394,12 +410,13 @@ exports.removeOAuthProvider = function(req, res, next) {
  * Article authorization middleware
  */
 exports.email = function(req, res, next) {
+
     var mailOptions = {
         from: req.body.user.displayName + '  <' + req.body.user.email + '>', // sender address
-        to: 'maorfrank@gmail.com', // list of receivers
-        subject: 'Hello ✔', // Subject line
-        text: 'Hello world ✔', // plaintext body
-        html: '<b>Hello world ✔</b>' // html body
+        to: req.body.article.user.email, // list of receivers
+        subject: req.body.subject, // Subject line
+        text: req.body.content, // plaintext body
+        html: '<b>' + req.body.content + '</b>' // html body
     };
     res.setHeader('Content-Type', 'application/json');
 

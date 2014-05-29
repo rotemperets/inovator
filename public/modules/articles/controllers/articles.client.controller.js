@@ -1,9 +1,8 @@
 'use strict';
 
-angular.module('articles').controller('ArticlesController', ['$scope', '$stateParams', '$location', 'Authentication', 'Articles','$http',
-	function($scope, $stateParams, $location, Authentication, Articles, $http) {
+angular.module('articles').controller('ArticlesController', ['$scope', '$stateParams', '$location', 'Authentication', 'Articles','$http','Users',
+	function($scope, $stateParams, $location, Authentication, Articles, $http, Users) {
 		$scope.authentication = Authentication;
-
 		$scope.create = function() {
 			var article = new Articles({
 				title: this.title,
@@ -48,24 +47,28 @@ angular.module('articles').controller('ArticlesController', ['$scope', '$statePa
 
 		$scope.find = function() {
 			$scope.articles = Articles.query();
+            $scope.users = Users.query();
 		};
 
 		$scope.findOne = function() {
 			$scope.article = Articles.get({
 				articleId: $stateParams.articleId
 			});
+            $scope.users = Users.query();
 		};
 
-    /*    $scope.email = function() {
-            $http.post('articles/' + $scope.article._id + '/email', {
-                name: 'maor'
-            }).success(function(data, status, headers, config) {
-                if(data.success){
-                    alert('yay');
-                }else {
-                    alert('crap');
-                }
-            });
-        };*/
+        $scope.filterMeOut = function(user)
+        {
+            // Do some tests
+
+            if(user._id === $scope.authentication.user._id)
+            {
+                return false; // this will be listed in the results
+            }
+
+            return true; // otherwise it won't be within the results
+        };
+
+
 	}
 ]);

@@ -9,7 +9,7 @@ module.exports = function(app) {
 	// User Routes
 	var users = require('../../app/controllers/users');
 	app.route('/users/me').get(users.me);
-	app.route('/users').put(users.update);
+	app.route('/users').put(users.update).get(users.allUsers);
 	app.route('/users/password').post(users.changePassword);
 	app.route('/users/accounts').delete(users.removeOAuthProvider);
 

@@ -26,11 +26,12 @@ body{
     margin: 5px;
     line-height: 1.4;
     text-align: center;
-    border: 1px solid #fff;
-    background-color: #f9f9f9;
+    background-color: #b9def0;
     box-sizing: border-box;
     color: #333;
     cursor: pointer;
+    border: 1px solid #000000;
+    border-radius: 5px;
 }
 
 .inventionsList .inventor, .inventionsList .title {
@@ -46,6 +47,7 @@ body{
     position: relative;
     display: inline-block;
     margin-top: 10px;
+    font-weight: bold;
 }
 
 .inventionsList .description{

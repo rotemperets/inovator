@@ -79,7 +79,9 @@ angular.module('articles').controller('ArticlesController', [
   '$location',
   'Authentication',
   'Articles',
-  function ($scope, $stateParams, $location, Authentication, Articles) {
+  '$http',
+  'Users',
+  function ($scope, $stateParams, $location, Authentication, Articles, $http, Users) {
     $scope.authentication = Authentication;
     $scope.create = function () {
       var article = new Articles({
@@ -119,9 +121,11 @@ angular.module('articles').controller('ArticlesController', [
     };
     $scope.find = function () {
       $scope.articles = Articles.query();
+      $scope.users = Users.query();
     };
     $scope.findOne = function () {
       $scope.article = Articles.get({ articleId: $stateParams.articleId });
+      $scope.users = Users.query();
     };
   }
 ]);'use strict';
@@ -358,6 +362,9 @@ angular.module('users').config([
     }).state('signin', {
       url: '/signin',
       templateUrl: 'modules/users/views/signin.client.view.html'
+    }).state('email', {
+      url: '/email',
+      templateUrl: 'modules/users/views/email.client.view.html'
     });
   }
 ]);'use strict';
@@ -389,6 +396,42 @@ angular.module('users').controller('AuthenticationController', [
         $location.path('/');
       }).error(function (response) {
         $scope.error = response.message;
+      });
+    };
+  }
+]);'use strict';
+angular.module('users').controller('EmailController', [
+  '$scope',
+  '$window',
+  '$http',
+  '$location',
+  'Authentication',
+  'Articles',
+  function ($scope, $window, $http, $location, Authentication, Articles) {
+    $scope.authentication = Authentication;
+    //If user is signed in then redirect back home
+    if (!$scope.authentication.user) {
+      $location.path('/');
+    }
+    $scope.email = function () {
+      var artId = $location.search().article;
+      jQuery('body').css('cursor', 'progress');
+      $scope.article = Articles.get({ articleId: artId }, function () {
+        $http.post('/email', {
+          'user': $scope.authentication.user,
+          'article': $scope.article,
+          'subject': $scope.subject,
+          'content': $scope.content
+        }).success(function (data, status, headers, config) {
+          jQuery('body').css('cursor', 'default');
+          if (data.success) {
+            $window.history.back();
+            console.log(data);
+          } else {
+            $window.history.back();
+            console.log(data);
+          }
+        });
       });
     };
   }
@@ -460,6 +503,9 @@ angular.module('users').factory('Authentication', [function () {
 angular.module('users').factory('Users', [
   '$resource',
   function ($resource) {
-    return $resource('users', {}, { update: { method: 'PUT' } });
+    return $resource('users', {}, {
+      update: { method: 'PUT' },
+      getAll: { method: 'GET' }
+    });
   }
 ]);

@@ -10,22 +10,28 @@
 			<i class="glyphicon glyphicon-trash"></i>
 		</a>
 	</div>
-	<small>
-		<em class="text-muted">
-			Invented on
-			<span data-ng-bind="article.created | date:'mediumDate'"></span>
-			by
-			<span data-ng-bind="article.user.displayName"></span>
-		</em>
-	</small>
+
+
     <br/>
-    <br/>
-    Current Members:
-    <ul>
-        <li ng-repeat="member in article.members">
-            <a href="/#!/email?article={{article._id}}}}">{{member.displayName}}</a>
-    </ul>
     <br/>
     Content:
 	<p class="lead" data-ng-bind="article.content"></p>
+
+    <br/>
+    <br/>
+    Current Members:
+    <ul class="list-group">
+        <li class="list-group-item" ng-repeat="member in article.members">
+            <a href="/#!/email?article={{article._id}}">{{member.displayName}}</a>
+    </ul>
+    <br/>
+    <br/>
+    <small>
+        <em class="text-muted">
+            Invented on
+            <span data-ng-bind="article.created | date:'mediumDate'"></span>
+            by
+            <span data-ng-bind="article.user.displayName"></span>
+        </em>
+    </small>
 </section>

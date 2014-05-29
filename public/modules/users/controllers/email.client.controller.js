@@ -1,27 +1,38 @@
 'use strict';
 
-angular.module('users').controller('EmailController', ['$scope','$routeParams', '$http', '$location', 'Authentication','Articles',
-	function($scope, $routeParams, $http, $location, Authentication, Articles) {
+angular.module('users').controller('EmailController', ['$scope','$window', '$http', '$location', 'Authentication','Articles',
+	function($scope, $window,  $http, $location, Authentication, Articles) {
 		$scope.authentication = Authentication;
-        $scope.article = Articles;
-        $scope.$routeParams = $routeParams;
 		//If user is signed in then redirect back home
 		if (!$scope.authentication.user){
             $location.path('/');
         }
 
-        $scope.email = function(article) {
-            $http.post('/email', {
-               'user': $scope.authentication.user
+        $scope.email = function() {
+            var artId = ($location.search()).article;
+            jQuery('body').css('cursor', 'progress');
+            $scope.article = Articles.get({
+                articleId: artId
+            }, function(){
+                $http.post('/email', {
+                    'user': $scope.authentication.user,
+                    'article': $scope.article,
+                    'subject': $scope.subject,
+                    'content': $scope.content
 
-            }).success(function(data, status, headers, config) {
-                if(data.success){
-                    alert(data.domain);
-                }else {
-                    alert(data.error);
-                }
+                }).success(function (data, status, headers, config) {
+                    jQuery('body').css('cursor', 'default');
+                    if (data.success) {
+                        $window.history.back();
+                        console.log(data);
+                    } else {
+                        $window.history.back();
+                        console.log(data);
+                    }
+                });
             });
-        };
 
+
+        };
 	}
 ]);
