@@ -15,6 +15,14 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider',
       .state('groups', {
         url: '/groups',
         templateUrl: 'modules/sportivity/views/groups.client.view.html'
-      });
+			})
+			.state('createActivity', {
+				url: '/activity/create',
+				templateUrl: 'modules/sportivity/views/new-activity.client.view.html'
+			})
+		.state('createGroup', {
+			url: '/group/create',
+			templateUrl: 'modules/sportivity/views/new-group.client.view.html'
+		});
 	}
 ]);
