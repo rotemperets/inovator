@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = {
-	db: 'mongodb://localhost/inovator-test',
+	db: 'mongodb://localhost/sportivity-test',
 	port: 3001,
 	app: {
 		title: 'Inovator - Test Environment'
