@@ -8,9 +8,9 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider',
 
 		// Home state routing
 		$stateProvider.
-      state('events', {
-        url: '/events',
-        templateUrl: 'modules/sportivity/views/events.client.view.html'
+      state('activities', {
+        url: '/activities',
+        templateUrl: 'modules/sportivity/views/activities.client.view.html'
       })
       .state('groups', {
         url: '/groups',
