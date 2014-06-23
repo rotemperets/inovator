@@ -1,10 +1,12 @@
-<section data-ng-controller="EventController">
+<section data-ng-controller="ActivityController">
+	<div style="border: solid 1px"></div>
   <div class="jumbotron text-center">
     <div class="row">
             <span class="lead">
-                Upcoming Events
+                Upcoming Activities
             </span>
-      <button ng-click="go('/articles', 'create')" class="btn pull-right " data-ng-show="authentication.user">New
+      <button ng-click="go('/articles', 'create')" class="btn pull-right btn-primary " data-ng-show="authentication.user">
+				<span class="glyphicon glyphicon-plus"></span> New
       </button>
     </div>
     <div class="row">

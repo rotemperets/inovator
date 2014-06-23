@@ -1,7 +1,7 @@
 'use strict';
 
 
-angular.module('core').controller('EventController', ['$scope', '$location','Authentication', 'Articles',
+angular.module('core').controller('ActivityController', ['$scope', '$location','Authentication', 'Articles',
 	function($scope,$location, Authentication, Articles) {
         $scope.inventions = Articles.query();
 
