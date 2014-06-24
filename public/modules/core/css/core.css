@@ -40,6 +40,7 @@ body {
 }
 
 .otherInventionsList {
+	box-shadow: 10px 10px 5px #888888;
 	min-width: 200px;
 	min-height: 200px;
 	overflow: hidden;
@@ -60,6 +61,7 @@ body {
 }
 
 .myInventionsList {
+	box-shadow: 10px 10px 5px #888888;
 	min-width: 200px;
 	min-height: 200px;
 	overflow: hidden;
@@ -80,6 +82,7 @@ body {
 }
 
 .myGroupsHome {
+	box-shadow: 10px 10px 5px #888888;
 	min-width: 200px;
 	min-height: 200px;
 	overflow: hidden;
@@ -100,6 +103,7 @@ body {
 }
 
 .otherGroupsHome {
+	box-shadow: 10px 10px 5px #888888;
 	min-width: 200px;
 	min-height: 200px;
 	overflow: hidden;
