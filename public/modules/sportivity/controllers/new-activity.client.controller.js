@@ -2,13 +2,25 @@
 
 angular.module('core').controller('NewActivityController', ['$scope', '$location','Authentication', 'Articles',
 	function($scope,$location, Authentication, Articles) {
-		$scope.inventions = Articles.query();
 
-		$scope.go = function ( path, articleId ) {
-			$location.path( path + '/' + articleId );
+		$scope.today = function() {
+			$scope.dt = new Date();
 		};
-		// This provides Authentication context.
-		$scope.authentication = Authentication;
+		$scope.today();
+
+		$scope.clear = function () {
+			$scope.dt = null;
+		};
+
+		// Disable weekend selection
+		$scope.disabled = function(date, mode) {
+			return ( mode === 'day' && ( date.getDay() === 0 || date.getDay() === 6 ) );
+		};
+
+		$scope.toggleMin = function() {
+			$scope.minDate = $scope.minDate ? null : new Date();
+		};
+		$scope.toggleMin();
 
 		$scope.open = function($event) {
 			$event.preventDefault();
@@ -16,5 +28,15 @@ angular.module('core').controller('NewActivityController', ['$scope', '$location
 
 			$scope.opened = true;
 		};
+
+		$scope.dateOptions = {
+			formatYear: 'yy',
+			startingDay: 1
+		};
+
+		$scope.initDate = new Date('2016-15-20');
+		$scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
+		$scope.format = $scope.formats[0];
+
 	}
 ]);
