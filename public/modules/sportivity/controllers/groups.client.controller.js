@@ -39,7 +39,10 @@ angular.module('sportivity').controller('GroupController', ['$scope', '$location
         });
       }
     };
-    $scope.update = function() {
+		$scope.join = function (group) {
+			$scope.groups[0].members.push($scope.authentication.user);
+		};
+		$scope.update = function() {
       var group = $scope.group;
 
       group.$update(function() {
