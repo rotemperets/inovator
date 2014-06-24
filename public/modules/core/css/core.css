@@ -79,6 +79,14 @@ body {
 	border-radius: 5px;
 }
 
+.myInventionsList:hover {
+	background-color: rgba(0, 0, 0, 0.52);
+}
+
+.otherInventionsList:hover {
+	background-color: rgba(0, 0, 0, 0.52);
+}
+
 .inventionsList .inventor, .inventionsList .title {
   position: relative;
   display: inline-block;
