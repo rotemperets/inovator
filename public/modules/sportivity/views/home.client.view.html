@@ -14,11 +14,11 @@
           <li ng-click="go('/activities', activity._id)" ng-repeat="activity in activities | orderBy: '-eventDate'">
             <span class="name">{{activity.title}}</span>
             </br>
-            <span class="description">What: {{activity.content}}</span>
+            <span class="description"><b>When:</b> {{activity.eventDate | date:'MMM dd - h:mma'}}</span>
             </br>
-            <span class="description">Where: {{activity.location}}</span>
+            <span class="description"><b>Where:</b> {{activity.location}}</span>
             </br>
-            <span class="description">When: {{activity.eventDate}}</span>
+            <span class="description"><b>What:</b> {{activity.content}}</span>
           </li>
         </ul>
       </div>
@@ -30,7 +30,7 @@
     </br>
     <div class="row">
             <span class="lead">
-                Existing Groups
+                Sportivity Groups
             </span>
       <button ng-click="go('/groups', 'create')" class="btn btn-primary pull-right " data-ng-show="authentication.user">
         <span class="glyphicon glyphicon-plus"></span> New
