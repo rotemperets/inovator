@@ -1,63 +1,61 @@
 <div data-ng-controller="NewActivityController">
-	<h1 style="text-align:center">New Activity</h1>
+  <h1 style="text-align:center">New Activity</h1>
 
-	<div style="position: relative; left: 293px;" class="form-group">
-		<label class="control-label">Date Time</label>
+  <section class="col-xs-offset-2 col-xs-8 col-md-offset-2 col-md-8" data-ng-controller="ActivityController">
+    <div class="col-md-12">
+      <form class="form-horizontal" data-ng-submit="create()" novalidate>
+        <fieldset>
+          <div class="form-group">
+            <label class="control-label" for="title">Title</label>
 
-		<div class="row">
-			<div class="col-md-2">
-				<p class="input-group">
-					<input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="dt" is-open="opened"
-								 min-date="minDate" max-date="'2015-06-22'" datepicker-options="dateOptions"
-								 date-disabled="disabled(date, mode)" ng-required="true" close-text="Close"/>
+            <div class="controls">
+              <input type="text" data-ng-model="activty.title" id="title" class="form-control" placeholder="Title"
+                     required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label" for="content">Description</label>
+
+            <div class="controls">
+              <textarea data-ng-model="activty.description" id="content" class="form-control" cols="30" rows="10"
+                        placeholder="Description"></textarea>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label" for="title">Location</label>
+
+            <div class="controls">
+              <input type="text" data-ng-model="activty.location" id="location" class="form-control"
+                     placeholder="Location" required>
+            </div>
+          </div>
+          <div class="form-group">
+          <div style="position: relative; left: 293px;" class="form-group">
+            <label class="control-label">Date Time</label>
+            <div class="row">
+              <div class="col-md-2">
+                <p class="input-group">
+                  <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="dt" is-open="opened"
+                         min-date="minDate" max-date="'2015-06-22'" datepicker-options="dateOptions"
+                         date-disabled="disabled(date, mode)" ng-required="true" close-text="Close"/>
               <span class="input-group-btn">
                 <button type="button" class="btn btn-default" ng-click="open($event)"><i
-										class="glyphicon glyphicon-calendar"></i></button>
+                  class="glyphicon glyphicon-calendar"></i></button>
               </span>
-				</p>
-			</div>
-		</div>
-	</div>
-
-	<section class="col-xs-offset-2 col-xs-8 col-md-offset-2 col-md-8" data-ng-controller="ArticlesController">
-		<div class="col-md-12">
-		<form class="form-horizontal" data-ng-submit="create()" novalidate>
-			<fieldset>
-				<div class="form-group">
-					<label class="control-label" for="title">Title</label>
-
-					<div class="controls">
-						<input type="text" data-ng-model="activty.title" id="title" class="form-control" placeholder="Title"
-									 required>
-					</div>
-				</div>
-				<div class="form-group">
-					<label class="control-label" for="content">Description</label>
-
-					<div class="controls">
-						<textarea data-ng-model="activty.description" id="content" class="form-control" cols="30" rows="10"
-											placeholder="Description"></textarea>
-					</div>
-				</div>
-
-				<div class="form-group">
-					<label class="control-label" for="title">Location</label>
-					<div class="controls">
-						<input type="text" data-ng-model="activty.location" id="location" class="form-control"
-									 placeholder="Location" required>
-					</div>
-				</div>
-
-				<div class="form-group">
-					<input type="submit" value="Save" class="btn btn-warning">
-				</div>
-				<div data-ng-show="error" class="text-danger">
-					<strong data-ng-bind="error"></strong>
-				</div>
-
-			</fieldset>
-		</form>
-	</div>
-</section>
+                </p>
+              </div>
+            </div>
+          </div>
+          </div>
+          <div class="form-group">
+            <input type="submit" value="Save" class="btn btn-warning">
+          </div>
+          <div data-ng-show="error" class="text-danger">
+            <strong data-ng-bind="error"></strong>
+          </div>
+        </fieldset>
+      </form>
+    </div>
+  </section>
 
 </div>

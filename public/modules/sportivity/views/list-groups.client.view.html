@@ -1,0 +1,23 @@
+<section data-ng-controller="GroupController">
+  <div class="jumbotron text-center">
+    <div class="row">
+            <span class="lead">
+                Existing Groups
+            </span>
+      <button ng-click="go('/groups', 'create')" class="btn btn-primary pull-right " data-ng-show="authentication.user">
+				<span class="glyphicon glyphicon-plus"></span> New
+      </button>
+    </div>
+    <div class="row">
+      <div class="">
+        <ul class="inventionsList">
+          <li ng-click="go('/groups', group._id)" ng-repeat="group in groups">
+            <span class="name">{{group.title}}</span>
+            </br>
+            <span class="description">{{group.content}}</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>

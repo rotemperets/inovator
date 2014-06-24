@@ -1,0 +1,53 @@
+<section class="col-xs-offset-2 col-xs-8 col-md-offset-2 col-md-8" data-ng-controller="GroupController" data-ng-init="findOne()">
+	<div class="page-header">
+		<h1>Edit Group</h1>
+	</div>
+	<div class="col-md-12">
+		<form class="form-horizontal" data-ng-submit="update()" novalidate>
+			<fieldset>
+				<div class="form-group">
+					<label class="control-label" for="title">Title</label>
+					<div class="controls">
+						<input type="text" data-ng-model="group.title" id="title" class="form-control" placeholder="Title" required>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label" for="content">Description</label>
+					<div class="controls">
+						<textarea data-ng-model="group.content" id="content" class="form-control" cols="30" rows="10" placeholder="Description"></textarea>
+					</div>
+				</div>
+				<div class="form-group">
+					<input type="submit" value="Update" class="btn btn-default">
+				</div>
+				<div data-ng-show="error" class="text-danger">
+					<strong data-ng-bind="error"></strong>
+				</div>
+			</fieldset>
+
+            <ul>
+                <li data-ng-repeat="member in group.members">
+                    <a href="/#!/email?group={{group._id}}">{{member.displayName}}</a>
+            </ul>
+            <br/>
+            <span>Add Member</span>
+            <br/>
+           <!--<select ng-model="group.members" ng-options="user.displayName for user in users"> </select>-->
+            <!-- Split button -->
+            <div class="btn-group" dropdown>
+                <button type="button" class="btn btn-danger">Select</button>
+                <button type="button" class="btn btn-danger dropdown-toggle">
+                    <span class="caret"></span>
+                    <span class="sr-only">Split button!</span>
+                </button>
+                <ul class="dropdown-menu" role="menu">
+                    <li data-ng-repeat="user in users | filter: filterMeOut">
+                        <a href="#">{{user.displayName}}</a>
+                </ul>
+            </div>
+
+
+
+		</form>
+	</div>
+</section>
