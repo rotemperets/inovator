@@ -3,10 +3,12 @@
   <div class="page-header">
     <h1 data-ng-bind="group.title"></h1>
   </div>
-  <div class="pull-right" data-ng-show="authentication.user._id == group.user._id">
+	<div class="pull-right" data-ng-show="authentication.user._id != group.user._id">
 		<a class="btn btn-primary" data-ng-click="join();" popover="Join to Group" popover-trigger="mouseenter">
-			<i class="glyphicon glyphicon-plus"></i>
+			Join
 		</a>
+	</div>
+	<div class="pull-right" data-ng-show="authentication.user._id == group.user._id">
 		<a class="btn btn-primary" href="/#!/groups/{{group._id}}/edit" popover="Edit Group" popover-trigger="mouseenter">
 			<i class="glyphicon glyphicon-edit"></i>
 		</a>

@@ -40,9 +40,12 @@ angular.module('sportivity').controller('GroupController', ['$scope', '$location
       }
     };
 		$scope.join = function (group) {
-			$scope.group.members.push($scope.authentication.user);
-			$scope.group.members = _.uniq($scope.group.members, "id");
-			$scope.update();
+
+
+			if(!isUserExistInGroup()){
+				$scope.group.members.push($scope.authentication.user);
+				$scope.update();
+			}
 		};
 		$scope.update = function() {
       var group = $scope.group;
@@ -72,6 +75,20 @@ angular.module('sportivity').controller('GroupController', ['$scope', '$location
 
       return true; // otherwise it won't be within the results
     };
+
+		function isUserExistInGroup(){
+			var stop = $scope.group.members.length;
+			var groupUsers = $scope.group.members;
+			var exist = false;
+			for (var i = 0; i < stop; i++) {
+				if(groupUsers[i]._id == user._id){
+					exist = true;
+					break;
+				}
+
+			}
+			return exist
+		}
   }
 ]);
 
