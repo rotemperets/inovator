@@ -8,7 +8,11 @@ angular.module('sportivity').config(['$stateProvider', '$urlRouterProvider',
 
     // Home state routing
     $stateProvider.
-      state('activities', {
+      state('home', {
+        url: '/',
+        templateUrl: 'modules/sportivity/views/home.client.view.html'
+      })
+      .state('activities', {
         url: '/activities',
         templateUrl: 'modules/sportivity/views/list-activities.client.view.html'
       })

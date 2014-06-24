@@ -1,59 +1,67 @@
 .content {
-	margin-top: 50px;
+  margin-top: 50px;
 }
+
 .undecorated-link:hover {
-	text-decoration: none;
+  text-decoration: none;
 }
+
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
-	display: none !important;
+  display: none !important;
 }
-body{
-    background-color: #F7EDED;
+
+body {
+  background-color: #F7EDED;
 }
-.inventionsList{
-    list-style: none;
-    padding: 0;
+
+.inventionsList {
+  list-style: none;
+  padding: 0;
 }
-.inventionsList li{
-    min-width: 200px;
-    min-height: 300px;
-    overflow: hidden;
-    width: 13.6%;
-    font-size: 15px;
-    float: left;
-    height: 115px;
-    padding: 10px;
-    margin: 5px;
-    line-height: 1.4;
-    text-align: center;
-    background-color: #b9def0;
-    box-sizing: border-box;
-    color: #333;
-    cursor: pointer;
-    border: 1px solid #000000;
-    border-radius: 5px;
+
+.inventionsList li {
+  min-width: 200px;
+  min-height: 200px;
+  overflow: hidden;
+  width: 13.6%;
+  font-size: 15px;
+  float: left;
+  height: 115px;
+  padding: 10px;
+  margin: 5px;
+  line-height: 1.4;
+  text-align: center;
+  background-color: #b9def0;
+  box-sizing: border-box;
+  color: #333;
+  cursor: pointer;
+  border: 1px solid #000000;
+  border-radius: 5px;
 }
 
 .inventionsList .inventor, .inventionsList .title {
-    position: relative;
-    display: inline-block;
-    margin-top: 5px;
-    font-weight: bold;
-}
-.inventionsList .title{
-    margin-top: 10px;
-}
-.inventionsList .name{
-    position: relative;
-    display: inline-block;
-    margin-top: 10px;
-    font-weight: bold;
+  position: relative;
+  display: inline-block;
+  margin-top: 5px;
+  font-weight: bold;
 }
 
-.inventionsList .description{
-    position: relative;
-    display: inline-block;
-    margin-top: 10px;
-    text-overflow: ellipsis;
+.inventionsList .title {
+  margin-top: 10px;
+}
 
+.inventionsList .name {
+  position: relative;
+  display: inline-block;
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.inventionsList .description {
+  position: relative;
+  display: inline-block;
+  margin-top: 10px;
+  text-overflow: ellipsis;
+  text-align: left;
+  width: 100%;
 }

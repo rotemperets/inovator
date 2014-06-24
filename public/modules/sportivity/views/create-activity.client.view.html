@@ -1,4 +1,4 @@
-<div data-ng-controller="ActivityController">
+<div style="padding-top: 50px">
   <h1 style="text-align:center">New Activity</h1>
 
   <section class="col-xs-offset-2 col-xs-8 col-md-offset-2 col-md-8" data-ng-controller="ActivityController">
@@ -31,10 +31,12 @@
           </div>
           <div class="form-group">
             <label class="control-label">Date Time</label>
+
             <div class="row">
               <div class="col-md-3">
                 <p class="input-group">
-                  <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="eventDate" is-open="opened"
+                  <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="eventDate"
+                         is-open="opened"
                          min-date="minDate" ng-required="true" close-text="Close"/>
               <span class="input-group-btn">
                 <button type="button" class="btn btn-default" ng-click="open($event)"><i
@@ -54,5 +56,4 @@
       </form>
     </div>
   </section>
-
 </div>
