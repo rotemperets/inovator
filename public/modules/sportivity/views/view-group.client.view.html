@@ -3,8 +3,10 @@
   <div class="page-header">
     <h1 data-ng-bind="group.title"></h1>
   </div>
-	<div class="pull-right" data-ng-show="authentication.user._id != group.user._id">
-		<a ng-if="!imInGroup" class="btn btn-primary" data-ng-click="join();" popover="Join to Group" popover-trigger="mouseenter">
+
+	<div class="pull-right" data-ng-show="authentication.user._id != group.user._id && authentication.user != undefined">
+
+			<a ng-if="!imInGroup" class="btn btn-primary" data-ng-click="join();" popover="Join to Group" popover-trigger="mouseenter">
 			Join
 		</a>
 		<a ng-if="imInGroup" class="btn btn-danger" data-ng-click="removeFromGroup();" popover="Remove from Group" popover-trigger="mouseenter">
@@ -12,6 +14,7 @@
 			Remove
 		</a>
 	</div>
+
 	<div class="pull-right" data-ng-show="authentication.user._id == group.user._id">
 		<a class="btn btn-primary" href="/#!/groups/{{group._id}}/edit" popover="Edit Group" popover-trigger="mouseenter">
 			<i class="glyphicon glyphicon-edit"></i>
