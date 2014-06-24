@@ -145,6 +145,13 @@ angular.module('sportivity').controller('ActivityController', ['$scope', '$locat
 			}
 			return exist;
 		}
+		$scope.getActivitiesClass = function(activity){
+			var clazz = {'otherInventionsList':true};
+			if(activity.user._id == $scope.authentication.user._id){
+				clazz = {'myInventionsList':true}
+			}
+			return clazz;
+		};
 
 	}
 ]);

@@ -10,8 +10,8 @@
       </button>
     </div>
     <div class="row">
-      <ul class="inventionsList">
-        <li ng-click="go('/activities', activity._id)" ng-repeat="activity in activities | orderBy: '-eventDate'">
+      <ul>
+        <li ng-class="getActivitiesClass(activity)" ng-click="go('/activities', activity._id)" ng-repeat="activity in activities | orderBy: '-eventDate'">
           <span class="name">{{activity.title}}</span>
           </br>
           <span class="description"><b>Group:</b> {{activity.group.title}}</span>

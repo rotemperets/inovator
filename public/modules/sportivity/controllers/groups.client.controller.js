@@ -106,6 +106,13 @@ angular.module('sportivity').controller('GroupController', ['$scope', '$location
 		}
 		$timeout(isUserExistInGroup, 100);
 
+		$scope.getGroupsClass = function(group){
+			var clazz = {'otherGroupsHome':true};
+			if(group.user._id == $scope.authentication.user._id){
+				clazz = {'myGroupsHome':true}
+			}
+			return clazz;
+		};
   }
 ]);
 

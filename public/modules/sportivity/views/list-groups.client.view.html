@@ -10,8 +10,8 @@
     </div>
     <div class="row">
       <div class="">
-        <ul class="inventionsList">
-          <li ng-click="go('/groups', group._id)" ng-repeat="group in groups">
+        <ul >
+          <li data-ng-class="getGroupsClass(group)" ng-click="go('/groups', group._id)" ng-repeat="group in groups">
             <span class="name">{{group.title}}</span>
             </br>
             <span class="description">{{group.content}}</span>
