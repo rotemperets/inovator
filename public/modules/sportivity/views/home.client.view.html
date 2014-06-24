@@ -11,7 +11,7 @@
     <div class="row">
       <div class="">
         <ul>
-          <li ng-class="getClass(activity)" ng-click="go('/activities', activity._id)" ng-repeat="activity in activities | orderBy: '-eventDate'">
+          <li ng-class="getActivitiesClass(activity)" ng-click="go('/activities', activity._id)" ng-repeat="activity in activities | orderBy: '-eventDate'">
             <span class="name">{{activity.title}}</span>
             </br>
             <span class="description"><b>When:</b> {{activity.eventDate | date:'MMM dd - h:mma'}}</span>
@@ -38,8 +38,8 @@
     </div>
     <div class="row">
       <div class="">
-        <ul class="inventionsList">
-          <li ng-click="go('/groups', group._id)" ng-repeat="group in groups">
+        <ul>
+          <li data-ng-class="getGroupsClass(group)" ng-click="go('/groups', group._id)" ng-repeat="group in groups">
             <span class="name">{{group.title}}</span>
             </br>
             <span class="description">{{group.content}}</span>

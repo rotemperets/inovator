@@ -79,6 +79,46 @@ body {
 	border-radius: 5px;
 }
 
+.myGroupsHome {
+	min-width: 200px;
+	min-height: 200px;
+	overflow: hidden;
+	width: 13.6%;
+	font-size: 15px;
+	float: left;
+	height: 115px;
+	padding: 10px;
+	margin: 5px;
+	line-height: 1.4;
+	text-align: center;
+	background-color: greenyellow;
+	box-sizing: border-box;
+	color: #333;
+	cursor: pointer;
+	border: 1px solid #000000;
+	border-radius: 5px;
+}
+
+.otherGroupsHome {
+	min-width: 200px;
+	min-height: 200px;
+	overflow: hidden;
+	width: 13.6%;
+	font-size: 15px;
+	float: left;
+	height: 115px;
+	padding: 10px;
+	margin: 5px;
+	line-height: 1.4;
+	text-align: center;
+	background-color: #ffffff;
+	box-sizing: border-box;
+	color: #333;
+	cursor: pointer;
+	border: 1px solid #000000;
+	border-radius: 5px;
+}
+
 .myInventionsList:hover {
 	background-color: rgba(0, 0, 0, 0.01);
 }
