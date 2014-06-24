@@ -51,13 +51,10 @@
                 <li data-ng-repeat="member in activity.members">
                     <a href="/#!/email?activity={{activity._id}}">{{member.displayName}}</a>
             </ul>
-            <br/>
-            <span>Add Member</span>
-            <br/>
            <!--<select ng-model="activity.members" ng-options="user.displayName for user in users"> </select>-->
             <!-- Split button -->
             <div class="btn-group" dropdown>
-                <button type="button" class="btn btn-danger">Select</button>
+                <button type="button" popover="Add Member" popover-trigger="mouseenter" class="btn btn-danger">Select</button>
                 <button type="button" class="btn btn-danger dropdown-toggle">
                     <span class="caret"></span>
                     <span class="sr-only">Split button!</span>
@@ -67,9 +64,6 @@
                         <a href="#">{{user.displayName}}</a>
                 </ul>
             </div>
-
-
-
 		</form>
 	</div>
 </section>

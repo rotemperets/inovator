@@ -6,9 +6,9 @@
 		<form class="form-horizontal" data-ng-submit="update()" novalidate>
 			<fieldset>
 				<div class="form-group">
-					<label class="control-label" for="title">Title</label>
+					<label class="control-label" for="title">Name</label>
 					<div class="controls">
-						<input type="text" data-ng-model="group.title" id="title" class="form-control" placeholder="Title" required>
+						<input type="text" data-ng-model="group.title" id="title" class="form-control" placeholder="Name" required>
 					</div>
 				</div>
 				<div class="form-group">
@@ -29,13 +29,10 @@
                 <li data-ng-repeat="member in group.members">
                     <a href="/#!/email?group={{group._id}}">{{member.displayName}}</a>
             </ul>
-            <br/>
-            <span>Add Member</span>
-            <br/>
            <!--<select ng-model="group.members" ng-options="user.displayName for user in users"> </select>-->
             <!-- Split button -->
             <div class="btn-group" dropdown>
-                <button type="button" class="btn btn-danger">Select</button>
+                <button type="button" popover="Add Member" popover-trigger="mouseenter" class="btn btn-danger">Select</button>
                 <button type="button" class="btn btn-danger dropdown-toggle">
                     <span class="caret"></span>
                     <span class="sr-only">Split button!</span>
@@ -45,9 +42,6 @@
                         <a href="#">{{user.displayName}}</a>
                 </ul>
             </div>
-
-
-
 		</form>
 	</div>
 </section>
