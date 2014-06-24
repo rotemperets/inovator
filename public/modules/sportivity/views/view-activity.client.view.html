@@ -1,0 +1,36 @@
+<section class="col-xs-offset-2 col-xs-8 col-md-offset-2 col-md-8" data-ng-controller="ActivityController"
+         data-ng-init="findOne()">
+  <div class="page-header">
+    <h1 data-ng-bind="activity.title"></h1>
+  </div>
+  <div class="pull-right" data-ng-show="authentication.user._id == activity.user._id">
+    <a class="btn btn-primary" href="/#!/activities/{{activity._id}}/edit">
+      <i class="glyphicon glyphicon-edit"></i>
+    </a>
+    <a class="btn btn-primary" data-ng-click="remove();">
+      <i class="glyphicon glyphicon-trash"></i>
+    </a>
+  </div>
+  Content:
+  <p class="lead" data-ng-bind="activity.content"></p>
+  Location:
+  <p class="lead" data-ng-bind="activity.location"></p>
+  Event Date:
+  <p class="lead" data-ng-bind="activity.eventDate"></p>
+  Current Members:
+  <ul class="list-group">
+    <li class="list-group-item" ng-repeat="member in activity.members">
+      <a href="/#!/email?activity={{activity._id}}">{{member.displayName}}</a>
+  </ul>
+  <br/>
+  <br/>
+  <small>
+    <em class="text-muted">
+      Invented on
+      <span data-ng-bind="activity.created | date:'mediumDate'"></span>
+      by
+      <span data-ng-bind="activity.user.displayName"></span>
+    </em>
+  </small>
+
+</section>

@@ -5,21 +5,21 @@
             <span class="lead header">
                 Upcoming Activities
             </span>
-      <button ng-click="go('/activity', 'create')" class="btn pull-right btn-primary " data-ng-show="authentication.user">
+      <button ng-click="go('/activities', 'create')" class="btn pull-right btn-primary " data-ng-show="authentication.user">
 				<span class="glyphicon glyphicon-plus"></span> New
       </button>
     </div>
     <div class="row">
       <div class="">
         <ul class="inventionsList">
-          <li ng-click="go('/activities', invention._id)" ng-repeat="invention in inventions">
-            <span class="name">{{invention.user.displayName}}</span>
+          <li ng-click="go('/activities', activity._id)" ng-repeat="activity in activities">
+            <span class="name">{{activity.title}}</span>
             </br>
-            <span class="description">{{invention.title}}</span>
+            <span class="description">What: {{activity.content}}</span>
             </br>
+            <span class="description">Where: {{activity.location}}</span>
             </br>
-            </br>
-            <span class="description">{{invention.content}}</span>
+            <span class="description">When: {{activity.eventDate}}</span>
           </li>
         </ul>
       </div>

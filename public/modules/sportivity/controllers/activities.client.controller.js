@@ -1,9 +1,11 @@
 'use strict';
 
 
-angular.module('sportivity').controller('ActivityController', ['$scope', '$location','Authentication', 'Activities',
-	function($scope,$location, Authentication, Activities) {
+angular.module('sportivity').controller('ActivityController', ['$scope', '$location','Authentication', 'Activities', '$stateParams', 'Users',
+	function($scope,$location, Authentication, Activities, $stateParams, Users) {
     $scope.authentication = Authentication;
+    $scope.activities = Activities.query();
+
     $scope.go = function (path, activityId) {
       $location.path(path + '/' + activityId);
     };
@@ -11,6 +13,8 @@ angular.module('sportivity').controller('ActivityController', ['$scope', '$locat
       var activity = new Activities({
         title: this.title,
         content: this.content,
+        location: this.location,
+        eventDate: this.eventDate,
         members: [$scope.authentication.user]
       });
       activity.$save(function(response) {
@@ -21,6 +25,8 @@ angular.module('sportivity').controller('ActivityController', ['$scope', '$locat
 
       this.title = '';
       this.content = '';
+      this.location = '';
+      this.eventDate = '';
     };
     $scope.remove = function(activity) {
       if (activity) {
@@ -52,7 +58,7 @@ angular.module('sportivity').controller('ActivityController', ['$scope', '$locat
     };
     $scope.findOne = function() {
       $scope.activity = Activities.get({
-        articleId: $stateParams.articleId
+        activityId: $stateParams.activityId
       });
       $scope.users = Users.query();
     };
@@ -67,21 +73,18 @@ angular.module('sportivity').controller('ActivityController', ['$scope', '$locat
       return true; // otherwise it won't be within the results
     };
 
-
     $scope.today = function() {
-      $scope.dt = new Date();
+      $scope.eventDate = new Date();
     };
     $scope.today();
-
     $scope.clear = function () {
-      $scope.dt = null;
+      $scope.eventDate = null;
     };
 
     $scope.toggleMin = function() {
       $scope.minDate = $scope.minDate ? null : new Date();
     };
     $scope.toggleMin();
-
     $scope.open = function($event) {
       $event.preventDefault();
       $event.stopPropagation();

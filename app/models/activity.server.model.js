@@ -26,6 +26,15 @@ var ActivitySchema = new Schema({
 		default: '',
 		trim: true
 	},
+  location: {
+    type: String,
+    default: '',
+    trim: true
+  },
+  eventDate: {
+    type: Date,
+    default: Date.now
+  },
 	user: {
             type: Schema.ObjectId,
             ref: 'User'

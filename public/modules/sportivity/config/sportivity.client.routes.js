@@ -10,11 +10,19 @@ angular.module('sportivity').config(['$stateProvider', '$urlRouterProvider',
     $stateProvider.
       state('activities', {
         url: '/activities',
-        templateUrl: 'modules/sportivity/views/activities.client.view.html'
+        templateUrl: 'modules/sportivity/views/list-activities.client.view.html'
       })
       .state('createActivity', {
-        url: '/activity/create',
+        url: '/activities/create',
         templateUrl: 'modules/sportivity/views/create-activity.client.view.html'
+      })
+      .state('viewActivity', {
+        url: '/activities/:activityId',
+        templateUrl: 'modules/sportivity/views/view-activity.client.view.html'
+      })
+      .state('editActivity', {
+        url: '/activities/:activityId/edit',
+        templateUrl: 'modules/sportivity/views/edit-activity.client.view.html'
       })
       .state('groups', {
         url: '/groups',
