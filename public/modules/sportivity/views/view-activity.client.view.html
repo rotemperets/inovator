@@ -4,7 +4,7 @@
     <h1 data-ng-bind="activity.title"></h1>
   </div>
 
-  <div class="pull-right" data-ng-show="authentication.user != undefined">
+  <div class="pull-right" data-ng-show="authentication.user._id != activity.user._id && authentication.user != undefined">
 
 		<a ng-if="!imInActivity" class="btn btn-primary" data-ng-click="join();" popover="Join to Activity" popover-trigger="mouseenter">
 			Join
