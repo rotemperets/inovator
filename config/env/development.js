@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = {
-	db: 'mongodb://localhost/sportivity-dev',
+	db: 'mongodb://rperets-pc/sportivity-dev',
 	app: {
 		title: 'Inovator - Development Environment'
 	},
