@@ -10,5 +10,13 @@ angular.module('sportivity').controller('HomeController', ['$scope', '$location'
     $scope.go = function (path, activityId) {
       $location.path(path + '/' + activityId);
     };
+
+		$scope.getClass = function(activity){
+			var clazz = {'otherInventionsList':true};
+			if(activity.user._id == $scope.authentication.user._id){
+				clazz = {'myInventionsList':true}
+			}
+			return clazz;
+		};
   }
 ]);
