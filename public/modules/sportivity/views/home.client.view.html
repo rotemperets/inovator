@@ -12,8 +12,8 @@
       <div class="">
         <ul>
           <li ng-class="getActivitiesClass(activity)" ng-click="go('/activities', activity._id)" ng-repeat="activity in activities | orderBy: '-eventDate'" popover="{{activity.title}}" popover-trigger="mouseenter">
-            <span class="name">{{activity.title}}</span>
-            </br>
+            <span style="" class="name">{{activity.title}}</span>
+						<hr/>
             <span class="description"><b>When:</b> {{activity.eventDate | date:'MMM dd - h:mma'}}</span>
             </br>
             <span class="description"><b>Where:</b> {{activity.location}}</span>
@@ -44,7 +44,7 @@
         <ul>
           <li ng-repeat="group in groups" data-ng-class="getGroupsClass(group)" ng-click="go('/groups', group._id)"  popover="{{group.title}}" popover-trigger="mouseenter">
             <span class="name">{{group.title}}</span>
-            </br>
+						<hr />
             <span class="description">{{group.content}}</span>
 						<br/>
 						<b>Members:</b>  <span class="badge">{{group.members.length}}</span>
