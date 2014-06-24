@@ -3,6 +3,11 @@
   <div class="page-header">
     <h1 data-ng-bind="activity.title"></h1>
   </div>
+	<div class="pull-right" data-ng-show="authentication.user._id != group.user._id">
+		<a class="btn btn-primary" data-ng-click="join();" popover="Join to Activity" popover-trigger="mouseenter">
+			Join
+		</a>
+	</div>
   <div class="pull-right" data-ng-show="authentication.user._id == activity.user._id">
     <a class="btn btn-primary" href="/#!/activities/{{activity._id}}/edit">
       <i class="glyphicon glyphicon-edit"></i>

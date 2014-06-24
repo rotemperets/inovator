@@ -43,6 +43,15 @@ angular.module('sportivity').controller('ActivityController', ['$scope', '$locat
         });
       }
     };
+
+		$scope.join = function (activities) {
+
+			if(!isUserExistInActivity()){
+				$scope.activity.members.push($scope.authentication.user);
+				$scope.update();
+			}
+		};
+
     $scope.update = function() {
       var activity = $scope.activity;
 
@@ -94,6 +103,18 @@ angular.module('sportivity').controller('ActivityController', ['$scope', '$locat
 
     $scope.format = 'dd-MM-yyyy hh:mm';
 
+		function isUserExistInActivity(){
+			var stop = $scope.activity.members.length;
+			var activityUsers = $scope.activity.members;
+			var exist = false;
+			for (var i = 0; i < stop; i++) {
+				if(activityUsers[i]._id == user._id){
+					exist = true;
+					break;
+				}
+			}
+			return exist
+		}
 
-  }
+	}
 ]);
