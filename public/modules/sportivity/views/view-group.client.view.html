@@ -9,10 +9,12 @@
 			<a ng-if="!imInGroup" class="btn btn-primary" data-ng-click="join();" popover="Join to Group" popover-trigger="mouseenter">
 			Join
 		</a>
+
 		<a ng-if="imInGroup" class="btn btn-danger" data-ng-click="removeFromGroup();" popover="Remove from Group" popover-trigger="mouseenter">
 			<i class="glyphicon glyphicon-trash"></i>
 			Remove
 		</a>
+
 	</div>
 
 	<div class="pull-right" data-ng-show="authentication.user._id == group.user._id">
@@ -31,6 +33,8 @@
   <br/>
   <br/>
   Current Members:
+	<br/>
+	<br/>
   <ul class="list-group">
     <li class="list-group-item" ng-repeat="member in group.members">
       <a href="/#!/email?group={{group._id}}">{{member.displayName}}</a>

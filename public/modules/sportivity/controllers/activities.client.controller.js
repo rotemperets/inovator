@@ -47,12 +47,29 @@ angular.module('sportivity').controller('ActivityController', ['$scope', '$locat
       }
     };
 
-		$scope.join = function (activities) {
+		$scope.join = function () {
 
 			if(!isUserExistInActivity()){
 				$scope.activity.members.push($scope.authentication.user);
 				$scope.update();
+				$scope.imInActivity = true;
 			}
+		};
+
+		$scope.removeFromActivity = function () {
+			var stop = $scope.activity.members.length;
+			var activityUsers = $scope.activity.members;
+			var index = -1;
+			for (var i = 0; i < stop; i++) {
+				if (activityUsers[i]._id == $scope.authentication.user._id) {
+					index = i;
+				}
+			}
+			if(index > -1){
+				$scope.activity.members.splice(index,1);
+				$scope.imInActivity = false;
+			}
+			$scope.update();
 		};
 
     $scope.update = function() {
@@ -112,16 +129,21 @@ angular.module('sportivity').controller('ActivityController', ['$scope', '$locat
     $scope.format = 'dd-MM-yyyy hh:mm';
 
 		function isUserExistInActivity(){
-			var stop = $scope.activity.members.length;
-			var activityUsers = $scope.activity.members;
 			var exist = false;
-			for (var i = 0; i < stop; i++) {
-				if(activityUsers[i]._id == user._id){
-					exist = true;
-					break;
+			if($scope.activity){
+				var stop = $scope.activity.members.length;
+				var activityUsers = $scope.activity.members;
+
+
+				for (var i = 0; i < stop; i++) {
+					if(activityUsers[i]._id == $scope.authentication.user._id){
+						exist = true;
+						break;
+					}
 				}
+				$scope.imInActivity = exist;
 			}
-			return exist
+			return exist;
 		}
 
 	}

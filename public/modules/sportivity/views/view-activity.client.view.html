@@ -3,19 +3,30 @@
   <div class="page-header">
     <h1 data-ng-bind="activity.title"></h1>
   </div>
-	<div class="pull-right" data-ng-show="authentication.user._id != group.user._id">
-		<a class="btn btn-primary" data-ng-click="join();" popover="Join to Activity" popover-trigger="mouseenter">
+
+  <div class="pull-right" data-ng-show="authentication.user != undefined">
+
+		<a ng-if="!imInActivity" class="btn btn-primary" data-ng-click="join();" popover="Join to Activity" popover-trigger="mouseenter">
 			Join
 		</a>
+
+		<a ng-if="imInActivity" class="btn btn-danger" data-ng-click="removeFromActivity();" popover="Remove from Activity" popover-trigger="mouseenter">
+			<i class="glyphicon glyphicon-trash"></i>
+			Remove
+		</a>
+
 	</div>
-  <div class="pull-right" data-ng-show="authentication.user._id == activity.user._id">
-    <a class="btn btn-primary" href="/#!/activities/{{activity._id}}/edit">
-      <i class="glyphicon glyphicon-edit"></i>
-    </a>
-    <a class="btn btn-danger" data-ng-click="remove();">
-      <i class="glyphicon glyphicon-trash"></i>
-    </a>
-  </div>
+
+	<div class="pull-right" data-ng-show="authentication.user._id == activity.user._id">
+		<a class="btn btn-primary" href="/#!/activities/{{activity._id}}/edit" popover="Edit Activity" popover-trigger="mouseenter">
+			<i class="glyphicon glyphicon-edit"></i>
+		</a>
+		<a class="btn btn-danger" data-ng-click="remove();" popover="Delete Activity" popover-trigger="mouseenter">
+			<i class="glyphicon glyphicon-trash"></i>
+		</a>
+	</div>
+	<br/>
+	<br/>
   Content:
   <p class="lead" data-ng-bind="activity.content"></p>
   Location:
@@ -25,6 +36,8 @@
   Group:
   <p class="lead" data-ng-bind="activity.group.title"></p>
   Current Members:
+	<br/>
+	<br/>
   <ul class="list-group">
     <li class="list-group-item" ng-repeat="member in activity.members">
       <a href="/#!/email?activity={{activity._id}}">{{member.displayName}}</a>
