@@ -35,6 +35,10 @@ var ActivitySchema = new Schema({
     type: Date,
     default: Date.now
   },
+  group: {
+    type: Schema.ObjectId,
+    ref: 'Group'
+  },
 	user: {
             type: Schema.ObjectId,
             ref: 'User'

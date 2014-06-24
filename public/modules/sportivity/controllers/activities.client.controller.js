@@ -1,10 +1,11 @@
 'use strict';
 
 
-angular.module('sportivity').controller('ActivityController', ['$scope', '$location','Authentication', 'Activities', '$stateParams', 'Users',
-	function($scope,$location, Authentication, Activities, $stateParams, Users) {
+angular.module('sportivity').controller('ActivityController', ['$scope', '$location','Authentication', 'Activities', '$stateParams', 'Users', 'Groups',
+	function($scope,$location, Authentication, Activities, $stateParams, Users, Groups) {
     $scope.authentication = Authentication;
     $scope.activities = Activities.query();
+    $scope.groups = Groups.query();
 
     $scope.go = function (path, activityId) {
       $location.path(path + '/' + activityId);
@@ -15,6 +16,7 @@ angular.module('sportivity').controller('ActivityController', ['$scope', '$locat
         content: this.content,
         location: this.location,
         eventDate: this.eventDate,
+        group: this.selectedGroup._id,
         members: [$scope.authentication.user]
       });
       activity.$save(function(response) {
@@ -27,6 +29,7 @@ angular.module('sportivity').controller('ActivityController', ['$scope', '$locat
       this.content = '';
       this.location = '';
       this.eventDate = '';
+      this.selectedGroup = '';
     };
     $scope.remove = function(activity) {
       if (activity) {
@@ -45,7 +48,7 @@ angular.module('sportivity').controller('ActivityController', ['$scope', '$locat
     };
     $scope.update = function() {
       var activity = $scope.activity;
-
+      activity.group = this.selectedGroup._id;
       activity.$update(function() {
         $location.path('activities/' + activity._id);
       }, function(errorResponse) {
@@ -57,8 +60,13 @@ angular.module('sportivity').controller('ActivityController', ['$scope', '$locat
       $scope.users = Users.query();
     };
     $scope.findOne = function() {
-      $scope.activity = Activities.get({
-        activityId: $stateParams.activityId
+      $scope.activity = Activities.get({activityId: $stateParams.activityId},
+      function(data){
+        for(var i = 0; i < $scope.groups.length; i++){
+          if($scope.groups[i]._id == data.group._id){
+            $scope.selectedGroup = $scope.groups[i];
+          }
+        }
       });
       $scope.users = Users.query();
     };

@@ -95,7 +95,7 @@ angular.module('sportivity').controller('GroupController', ['$scope', '$location
 				var groupUsers = $scope.group.members;
 
 				for (var i = 0; i < stop; i++) {
-					if (groupUsers[i]._id == user._id) {
+					if (groupUsers[i]._id == $scope.authentication.user._id) {
 						exist = true;
 						break;
 					}

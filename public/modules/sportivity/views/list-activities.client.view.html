@@ -14,6 +14,8 @@
         <li ng-click="go('/activities', activity._id)" ng-repeat="activity in activities | orderBy: '-eventDate'">
           <span class="name">{{activity.title}}</span>
           </br>
+          <span class="description"><b>Group:</b> {{activity.group.title}}</span>
+          </br>
           <span class="description"><b>When:</b> {{activity.eventDate | date:'MMM dd - h:mma'}}</span>
           </br>
           <span class="description"><b>Where:</b> {{activity.location}}</span>

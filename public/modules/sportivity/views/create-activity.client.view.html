@@ -47,6 +47,16 @@
             </div>
           </div>
           <div class="form-group">
+            <label class="control-label" for="title">Group</label>
+
+            <div class="row">
+              <div class="col-md-3">
+                <select data-ng-model="selectedGroup" data-ng-options="group.title for group in groups" style="width: 100%"
+                        class="btn"></select>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
             <input type="submit" value="Save" class="btn btn-warning">
           </div>
           <div data-ng-show="error" class="text-danger">
