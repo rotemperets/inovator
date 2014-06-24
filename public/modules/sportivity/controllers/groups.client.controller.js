@@ -1,11 +1,10 @@
 'use strict';
 
 
-angular.module('sportivity').controller('GroupController', ['$scope', '$location', 'Authentication', 'Groups', '$stateParams', 'Users',
-  function ($scope, $location, Authentication, Groups, $stateParams, Users) {
+angular.module('sportivity').controller('GroupController', ['$scope', '$location', 'Authentication', 'Groups', '$stateParams', 'Users','$timeout',
+  function ($scope, $location, Authentication, Groups, $stateParams, Users,$timeout) {
     $scope.authentication = Authentication;
     $scope.groups = Groups.query();
-
     $scope.go = function (path, groupId) {
       $location.path(path + '/' + groupId);
     };
@@ -40,12 +39,26 @@ angular.module('sportivity').controller('GroupController', ['$scope', '$location
       }
     };
 		$scope.join = function (group) {
-
-
 			if(!isUserExistInGroup()){
 				$scope.group.members.push($scope.authentication.user);
 				$scope.update();
+				$scope.imInGroup = true;
 			}
+		};
+		$scope.removeFromGroup = function () {
+			var stop = $scope.group.members.length;
+			var groupUsers = $scope.group.members;
+			var index = -1;
+			for (var i = 0; i < stop; i++) {
+				if (groupUsers[i]._id == user._id) {
+					index = i;
+				}
+			}
+			if(index > -1){
+				$scope.group.members.splice(index,1);
+				$scope.imInGroup = false;
+			}
+			$scope.update();
 		};
 		$scope.update = function() {
       var group = $scope.group;
@@ -75,20 +88,24 @@ angular.module('sportivity').controller('GroupController', ['$scope', '$location
 
       return true; // otherwise it won't be within the results
     };
-
 		function isUserExistInGroup(){
-			var stop = $scope.group.members.length;
-			var groupUsers = $scope.group.members;
 			var exist = false;
-			for (var i = 0; i < stop; i++) {
-				if(groupUsers[i]._id == user._id){
-					exist = true;
-					break;
-				}
+			if ($scope.group) {
+				var stop = $scope.group.members.length;
+				var groupUsers = $scope.group.members;
 
+				for (var i = 0; i < stop; i++) {
+					if (groupUsers[i]._id == user._id) {
+						exist = true;
+						break;
+					}
+				}
+				$scope.imInGroup = exist;
 			}
-			return exist
+			return exist;
 		}
+		$timeout(isUserExistInGroup, 100);
+
   }
 ]);
 
