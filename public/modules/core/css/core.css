@@ -119,6 +119,14 @@ body {
 	border-radius: 5px;
 }
 
+.myGroupsHome:hover {
+	background-color: rgba(0, 0, 0, 0.01);
+}
+
+.otherGroupsHome:hover {
+	background-color: rgba(0, 0, 0, 0.01);
+}
+
 .myInventionsList:hover {
 	background-color: rgba(0, 0, 0, 0.01);
 }

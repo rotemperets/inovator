@@ -20,7 +20,7 @@ angular.module('sportivity').controller('HomeController', ['$scope', '$location'
 		};
 
 		$scope.getGroupsClass = function(group){
-			var clazz = {'otherInventionsList':true};
+			var clazz = {'otherGroupsHome':true};
 			if(group.user._id == $scope.authentication.user._id){
 				clazz = {'myGroupsHome':true}
 			}
