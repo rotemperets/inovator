@@ -12,7 +12,9 @@
     <div class="row">
       <ul>
         <li ng-class="getActivitiesClass(activity)" ng-click="go('/activities', activity._id)" ng-repeat="activity in activities | orderBy: '-eventDate'">
-          <span class="name"><b>{{activity.title}}</b></span>
+					<div style="width:200px; text-align: center">
+						<span class="name"><b>{{activity.title}}</b></span>
+					</div>
 					<hr style="border-top:solid 1px #000000;margin: 5px;"/>
           <span class="description"><b>Group:</b> {{activity.group.title}}</span>
           </br>
