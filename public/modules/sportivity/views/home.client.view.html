@@ -10,7 +10,7 @@
       </button>
     </div>
     <div class="row">
-      <div data-ng-class="getActivitiesClass(activity)" ng-click="go('/activities', activity._id)" ng-repeat="activity in activities | orderBy: '-eventDate'">
+      <div  data-ng-class="getActivitiesClass(activity)" ng-click="go('/activities', activity._id)" ng-repeat="activity in activities | orderBy: '-eventDate'">
         <div class="info-data">
           <span class="glyphicon glyphicon-ok check-in" data-ng-if="showCheck(activity)"></span>{{activity.title}}
         </div>
@@ -28,9 +28,7 @@
       </div>
     </div>
     </br>
-    </br>
     <hr style="border-top: solid 1px #A7A7A7; margin-bottom: 0"/>
-    </br>
     </br>
     <div class="row">
             <span class="lead">
