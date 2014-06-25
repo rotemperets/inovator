@@ -1,8 +1,8 @@
 'use strict';
 
 
-angular.module('sportivity').controller('ActivityController', ['$scope', '$location','Authentication', 'Activities', '$stateParams', 'Users', 'Groups',
-	function($scope,$location, Authentication, Activities, $stateParams, Users, Groups) {
+angular.module('sportivity').controller('ActivityController', ['$scope', '$location','Authentication', 'Activities', '$stateParams', 'Users', 'Groups', '$http',
+	function($scope,$location, Authentication, Activities, $stateParams, Users, Groups, $http) {
     $scope.authentication = Authentication;
     $scope.activities = Activities.query();
     $scope.groups = Groups.query();
@@ -20,6 +20,18 @@ angular.module('sportivity').controller('ActivityController', ['$scope', '$locat
         members: [$scope.authentication.user]
       });
       activity.$save(function(response) {
+        Activities.get({activityId: response._id},
+          function(data){
+            for (var i = 0; i < data.group.members.length; i++) {
+              $http.post('/emailActivity', {
+                'user': $scope.authentication.user,
+                'activity': data,
+                'groupMember': data.group.members[i],
+                'content': '<b>Where:</b> ' + data.location + '</br><b>When:</b> ' + data.eventDate +  '</br></br><b>Description:</b> ' + data.content
+              })
+            }
+          });
+
         $location.path('activities/' + response._id);
       }, function(errorResponse) {
         $scope.error = errorResponse.data.message;

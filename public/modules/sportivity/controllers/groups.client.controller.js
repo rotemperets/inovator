@@ -2,7 +2,8 @@
 
 
 angular.module('sportivity').controller('GroupController', ['$scope', '$location', 'Authentication', 'Groups', '$stateParams', 'Users','$timeout',
-  function ($scope, $location, Authentication, Groups, $stateParams, Users,$timeout) {
+  function ($scope, $location, Authentication, Groups, $stateParams, Users, $timeout) {
+    $scope.groupType = 'sports';
     $scope.authentication = Authentication;
     $scope.groups = Groups.query();
     $scope.go = function (path, groupId) {
@@ -12,6 +13,7 @@ angular.module('sportivity').controller('GroupController', ['$scope', '$location
       var group = new Groups({
         title: this.title,
         content: this.content,
+        type: this.groupType,
         members: [$scope.authentication.user]
       });
       group.$save(function(response) {
@@ -22,6 +24,7 @@ angular.module('sportivity').controller('GroupController', ['$scope', '$location
 
       this.title = '';
       this.content = '';
+      this.groupType = '';
     };
     $scope.remove = function(group) {
       if (group) {

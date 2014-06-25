@@ -20,6 +20,10 @@ var GroupSchema = new Schema({
     trim: true,
     required: 'Title cannot be blank'
   },
+  type:{
+    type: String,
+    default: 'sports'
+  },
   content: {
     type: String,
     default: '',

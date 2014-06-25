@@ -22,6 +22,22 @@
           </div>
         </div>
         <div class="form-group">
+          <label class="control-label" for="content">Type</label>
+
+          <div class="controls">
+            <select class="btn" data-ng-model="group.type">
+              <option>sports</option>
+              <option>running</option>
+              <option>soccer</option>
+              <option>football</option>
+              <option>basketball</option>
+              <option>boxing</option>
+              <option>tennis</option>
+              <option>volleyball</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
           <input type="submit" value="Update" class="btn btn-default">
         </div>
         <div data-ng-show="error" class="text-danger">

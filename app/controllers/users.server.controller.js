@@ -433,3 +433,28 @@ exports.email = function(req, res, next) {
 
 
 };
+
+exports.emailActivity = function(req, res, next) {
+
+  var mailOptions = {
+    from: req.body.user.displayName + '  <' + req.body.user.email + '>', // sender address
+    to: req.body.groupMember.email, // list of receivers
+    subject: req.body.activity.title, // Subject line
+    text: req.body.content, // plaintext body
+    html: req.body.content // html body
+  };
+  res.setHeader('Content-Type', 'application/json');
+
+  transport.sendMail(mailOptions, function(error, responseStatus){
+    if(!error){
+      res.write(JSON.stringify({success: true}));
+      res.end();
+    }
+    else{
+      res.write(JSON.stringify({error: error}));
+      res.end();
+    }
+  });
+
+
+};

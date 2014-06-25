@@ -31,7 +31,7 @@ body {
   margin: 5px;
   line-height: 1.4;
   text-align: center;
-  background-color: #ffffff;
+  background-color: #F7F7F7;
   box-sizing: border-box;
   color: #333;
   cursor: pointer;
@@ -52,12 +52,13 @@ body {
 	margin: 5px;
 	line-height: 1.4;
 	text-align: center;
-	background-color: #ffffff;
+	background-color: #f5f5f5;
 	box-sizing: border-box;
 	color: #333;
 	cursor: pointer;
 	border: 1px solid #000000;
 	border-radius: 5px;
+  position: relative;
 }
 
 .myInventionsList {
@@ -73,44 +74,43 @@ body {
 	margin: 5px;
 	line-height: 1.4;
 	text-align: center;
-	background-color: greenyellow;
+	background-color: rgb(225, 239, 255);
 	box-sizing: border-box;
 	color: #333;
 	cursor: pointer;
 	border: 1px solid #000000;
 	border-radius: 5px;
+  position: relative;
 }
 
 .myGroupsHome {
 	box-shadow: 10px 10px 5px #888888;
-	min-width: 200px;
-	min-height: 200px;
+	width: 200px;
+	height: 200px;
 	overflow: hidden;
 	width: 13.6%;
 	font-size: 15px;
 	float: left;
-	height: 115px;
 	padding: 10px;
 	margin: 5px;
 	line-height: 1.4;
 	text-align: center;
-	background-color: greenyellow;
+	background-color: #F7F7F7;
 	box-sizing: border-box;
 	color: #333;
 	cursor: pointer;
 	border: 1px solid #000000;
 	border-radius: 5px;
+  position: relative;
 }
 
 .otherGroupsHome {
 	box-shadow: 10px 10px 5px #888888;
-	min-width: 200px;
-	min-height: 200px;
+	width: 200px;
+	height: 200px;
 	overflow: hidden;
-	width: 13.6%;
 	font-size: 15px;
 	float: left;
-	height: 115px;
 	padding: 10px;
 	margin: 5px;
 	line-height: 1.4;
@@ -121,6 +121,7 @@ body {
 	cursor: pointer;
 	border: 1px solid #000000;
 	border-radius: 5px;
+  position: relative;
 }
 
 .myGroupsHome:hover {

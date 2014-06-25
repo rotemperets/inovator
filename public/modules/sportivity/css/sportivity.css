@@ -1,0 +1,81 @@
+.group-icon {
+  width: 30px;
+  height: 30px;
+  float: right;
+  margin-right: 5px;
+  margin-bottom: 5px;
+}
+
+.activity-icon{
+  width: 30px;
+  height: 30px;
+  position: relative;
+  bottom: -68px;
+  right: -40px
+}
+
+.activity-edit-icon{
+  width: 30px;
+  height: 30px;
+  position: relative;
+  bottom: -45px;
+  right: -40px
+}
+
+.info-data{
+  font-weight: bold;
+  position: absolute;
+  left: 0;
+  right: 0;
+  width: 100%;
+}
+
+.info-icon{
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+}
+
+.info-members{
+  position: absolute;
+  text-align: left;
+  left: 11px;
+  right: 0;
+  bottom: 5px;
+  width: 100%;
+}
+
+.info-content{
+  position: absolute;
+  width: 180px;
+  height: 125px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.info {
+  position: relative;
+  margin-top: 5px;
+  display: block;
+  text-align: left;
+}
+
+.info-details{
+  position: relative;
+  margin-top: 25px;
+  display: block;
+  text-align: left;
+}
+
+.info-activity{
+  position: relative;
+  width: 180px;
+  height: 55px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  text-align: left;
+  margin-top: 5px;
+}

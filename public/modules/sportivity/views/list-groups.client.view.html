@@ -9,16 +9,17 @@
       </button>
     </div>
     <div class="row">
-      <div class="">
-        <ul >
-          <li data-ng-class="getGroupsClass(group)" ng-click="go('/groups', group._id)" ng-repeat="group in groups">
-            <span class="name">{{group.title}}</span>
-						<hr/>
-            <span class="description">{{group.content}}</span>
-						<br/>
-						<b>Members:</b>  <span class="badge">{{group.members.length}}</span>
-          </li>
-        </ul>
+      <div data-ng-class="getGroupsClass(group)" ng-click="go('/groups', group._id)" ng-repeat="group in groups">
+        <div class="info-data">{{group.title}}</div>
+        </br>
+        <div class="info-content" title="{{group.content}}">{{group.content}}</div>
+        <br/>
+        <div class="info-members">
+          <b>Members:</b>  <div class="badge">{{group.members.length}}</div>
+        </div>
+        <div class="info-icon">
+          <img src="/modules/sportivity/img/{{group.type}}.png" class="group-icon" />
+        </div>
       </div>
     </div>
   </div>

@@ -4,26 +4,21 @@
             <span class="lead header">
                 Upcoming Activities
             </span>
-      <button ng-click="go('/activities', 'create')" class="btn pull-right btn-primary " data-ng-show="authentication.user">
+      <button ng-click="go('/activities', 'create')" class="btn pull-right btn-primary "
+              data-ng-show="authentication.user">
         <span class="glyphicon glyphicon-plus"></span> New
       </button>
     </div>
     <div class="row">
-      <div class="">
-        <ul>
-          <li ng-class="getActivitiesClass(activity)" ng-click="go('/activities', activity._id)" ng-repeat="activity in activities | orderBy: '-eventDate'" popover="{{activity.title}}" popover-trigger="mouseenter">
-            <span style="" class="name">{{activity.title}}</span>
-						<hr/>
-            <span class="description"><b>When:</b> {{activity.eventDate | date:'MMM dd - h:mma'}}</span>
-            </br>
-            <span class="description"><b>Where:</b> {{activity.location}}</span>
-            </br>
-            <span class="description"><b>What:</b> {{activity.content}}</span>
-						<br/>
-						<b>Members:</b>  <span class="badge">{{activity.members.length}}</span>
-
-          </li>
-        </ul>
+      <div data-ng-class="getActivitiesClass(activity)" ng-click="go('/activities', activity._id)" ng-repeat="activity in activities | orderBy: '-eventDate'">
+        <div class="info-data">{{activity.title}}</div>
+        <div class="info-details"><b>Group:</b> {{activity.group.title}}</div>
+        <div class="info"><b>When:</b> {{activity.eventDate | date:'MMM dd - h:mma'}}</div>
+        <div class="info"><b>Where:</b> {{activity.location}}</div>
+        <div class="info-activity" title="{{activity.content}}"><b>What:</b> {{activity.content}}</div>
+        <div class="info-icon">
+          <img src="/modules/sportivity/img/{{activity.group.type}}.png" class="group-icon" />
+        </div>
       </div>
     </div>
     </br>
@@ -40,16 +35,17 @@
       </button>
     </div>
     <div class="row">
-      <div class="">
-        <ul>
-          <li ng-repeat="group in groups" data-ng-class="getGroupsClass(group)" ng-click="go('/groups', group._id)"  popover="{{group.title}}" popover-trigger="mouseenter">
-            <span class="name">{{group.title}}</span>
-						<hr />
-            <span class="description">{{group.content}}</span>
-						<br/>
-						<b>Members:</b>  <span class="badge">{{group.members.length}}</span>
-          </li>
-        </ul>
+      <div data-ng-class="getGroupsClass(group)" ng-click="go('/groups', group._id)" ng-repeat="group in groups">
+        <div class="info-data">{{group.title}}</div>
+        </br>
+        <div class="info-content" title="{{group.content}}">{{group.content}}</div>
+        <br/>
+        <div class="info-members">
+          <b>Members:</b>  <div class="badge">{{group.members.length}}</div>
+        </div>
+        <div class="info-icon">
+          <img src="/modules/sportivity/img/{{group.type}}.png" class="group-icon" />
+        </div>
       </div>
     </div>
   </div>
