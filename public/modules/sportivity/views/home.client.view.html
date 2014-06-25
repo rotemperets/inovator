@@ -11,11 +11,12 @@
     <div class="row">
       <div class="">
         <ul>
-          <li ng-class="getActivitiesClass(activity)" ng-click="go('/activities', activity._id)" ng-repeat="activity in activities | orderBy: '-eventDate'" popover="{{activity.title}}" popover-trigger="mouseenter">
-            <span style="" class="name">{{activity.title}}</span>
-						<hr/>
-            <span class="description"><b>When:</b> {{activity.eventDate | date:'MMM dd - h:mma'}}</span>
-            </br>
+					<li ng-class="getActivitiesClass(activity)" ng-click="go('/activities', activity._id)"
+							ng-repeat="activity in activities | orderBy: '-eventDate'">
+						<span style="" class="name"><b>{{activity.title}}</b></span>
+						<hr style="border-top:solid 1px #000000;margin: 5px;"/>
+						<span class="description"><b>When:</b> {{activity.eventDate | date:'MMM dd - h:mma'}}</span>
+						</br>
             <span class="description"><b>Where:</b> {{activity.location}}</span>
             </br>
             <span class="description"><b>What:</b> {{activity.content}}</span>
@@ -42,10 +43,10 @@
     <div class="row">
       <div class="">
         <ul>
-          <li ng-repeat="group in groups" data-ng-class="getGroupsClass(group)" ng-click="go('/groups', group._id)"  popover="{{group.title}}" popover-trigger="mouseenter">
-            <span class="name">{{group.title}}</span>
-						<hr />
-            <span class="description">{{group.content}}</span>
+					<li ng-repeat="group in groups" data-ng-class="getGroupsClass(group)" ng-click="go('/groups', group._id)">
+						<span class="name"><b>{{group.title}}</b></span>
+						<hr style="border-top:solid 1px #000000;margin: 5px;"/>
+						<span class="description">{{group.content}}</span>
 						<br/>
 						<b>Members:</b>  <span class="badge">{{group.members.length}}</span>
           </li>

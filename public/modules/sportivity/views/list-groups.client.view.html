@@ -12,9 +12,9 @@
       <div class="">
         <ul >
           <li data-ng-class="getGroupsClass(group)" ng-click="go('/groups', group._id)" ng-repeat="group in groups">
-            <span class="name">{{group.title}}</span>
-						<hr/>
-            <span class="description">{{group.content}}</span>
+						<span class="name"><b>{{group.title}}</b></span>
+						<hr style="border-top:solid 1px #000000;margin: 5px;"/>
+						<span class="description">{{group.content}}</span>
 						<br/>
 						<b>Members:</b>  <span class="badge">{{group.members.length}}</span>
           </li>
