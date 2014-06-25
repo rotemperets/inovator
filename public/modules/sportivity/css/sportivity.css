@@ -28,6 +28,7 @@
   left: 0;
   right: 0;
   width: 100%;
+  text-transform:capitalize;
 }
 
 .info-icon{
@@ -41,7 +42,7 @@
 .info-members{
   position: absolute;
   text-align: left;
-  left: 11px;
+  left: 9px;
   right: 0;
   bottom: 5px;
   width: 100%;
@@ -50,7 +51,7 @@
 .info-content{
   position: absolute;
   width: 180px;
-  height: 125px;
+  height: 124px;
   overflow: hidden;
   text-overflow: ellipsis;
   text-align: left;
@@ -65,7 +66,7 @@
 
 .info-details{
   position: relative;
-  margin-top: 25px;
+  margin-top: 5px;
   display: block;
   text-align: left;
 }
@@ -79,4 +80,9 @@
   text-overflow: ellipsis;
   text-align: left;
   margin-top: 5px;
+}
+
+.check-in{
+  float: left;
+  margin-left: 10px;
 }

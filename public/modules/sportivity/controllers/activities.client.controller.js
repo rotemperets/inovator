@@ -1,8 +1,9 @@
 'use strict';
 
 
-angular.module('sportivity').controller('ActivityController', ['$scope', '$location','Authentication', 'Activities', '$stateParams', 'Users', 'Groups', '$http',
-	function($scope,$location, Authentication, Activities, $stateParams, Users, Groups, $http) {
+angular.module('sportivity').controller('ActivityController',
+  ['$scope', '$location','Authentication', 'Activities', '$stateParams', 'Users', 'Groups', '$http', '$timeout',
+	function($scope,$location, Authentication, Activities, $stateParams, Users, Groups, $http, $timeout) {
     $scope.authentication = Authentication;
     $scope.activities = Activities.query();
     $scope.groups = Groups.query();
@@ -157,13 +158,25 @@ angular.module('sportivity').controller('ActivityController', ['$scope', '$locat
 			}
 			return exist;
 		}
+    $timeout(isUserExistInActivity, 100);
+
 		$scope.getActivitiesClass = function(activity){
 			var clazz = {'otherInventionsList':true};
-			if(activity.user._id == $scope.authentication.user._id){
+			if(activity.user !== undefined && $scope.authentication.user != undefined && activity.user._id == $scope.authentication.user._id){
 				clazz = {'myInventionsList':true}
 			}
 			return clazz;
 		};
 
+    $scope.showCheck = function(item){
+      if(item){
+        for (var i = 0; i < item.members.length; i++) {
+          if(item.members[i]._id == $scope.authentication.user._id){
+            return true;
+          }
+        }
+      }
+      return false;
+    }
 	}
 ]);

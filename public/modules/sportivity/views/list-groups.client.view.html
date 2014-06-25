@@ -10,8 +10,10 @@
     </div>
     <div class="row">
       <div data-ng-class="getGroupsClass(group)" ng-click="go('/groups', group._id)" ng-repeat="group in groups">
-        <div class="info-data">{{group.title}}</div>
-        </br>
+        <div class="info-data">
+          <span class="glyphicon glyphicon-ok check-in" data-ng-if="showCheck(group)"></span>{{group.title}}
+        </div>
+        <hr style="border-top: solid 1px #A7A7A7; margin-bottom: 0"/>
         <div class="info-content" title="{{group.content}}">{{group.content}}</div>
         <br/>
         <div class="info-members">

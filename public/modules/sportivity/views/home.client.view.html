@@ -11,11 +11,17 @@
     </div>
     <div class="row">
       <div data-ng-class="getActivitiesClass(activity)" ng-click="go('/activities', activity._id)" ng-repeat="activity in activities | orderBy: '-eventDate'">
-        <div class="info-data">{{activity.title}}</div>
+        <div class="info-data">
+          <span class="glyphicon glyphicon-ok check-in" data-ng-if="showCheck(activity)"></span>{{activity.title}}
+        </div>
+        <hr style="border-top: solid 1px #A7A7A7; margin-bottom: 0"/>
         <div class="info-details"><b>Group:</b> {{activity.group.title}}</div>
         <div class="info"><b>When:</b> {{activity.eventDate | date:'MMM dd - h:mma'}}</div>
         <div class="info"><b>Where:</b> {{activity.location}}</div>
         <div class="info-activity" title="{{activity.content}}"><b>What:</b> {{activity.content}}</div>
+        <div class="info-members">
+          <b>Participants:</b>  <div class="badge">{{activity.members.length}}</div>
+        </div>
         <div class="info-icon">
           <img src="/modules/sportivity/img/{{activity.group.type}}.png" class="group-icon" />
         </div>
@@ -23,7 +29,7 @@
     </div>
     </br>
     </br>
-    <div style="width: 100%;height: 1px;background-color: #000000"></div>
+    <hr style="border-top: solid 1px #A7A7A7; margin-bottom: 0"/>
     </br>
     </br>
     <div class="row">
@@ -36,8 +42,10 @@
     </div>
     <div class="row">
       <div data-ng-class="getGroupsClass(group)" ng-click="go('/groups', group._id)" ng-repeat="group in groups">
-        <div class="info-data">{{group.title}}</div>
-        </br>
+        <div class="info-data">
+          <span class="glyphicon glyphicon-ok check-in" data-ng-if="showCheck(group)"></span>{{group.title}}
+        </div>
+        <hr style="border-top: solid 1px #A7A7A7; margin-bottom: 0"/>
         <div class="info-content" title="{{group.content}}">{{group.content}}</div>
         <br/>
         <div class="info-members">

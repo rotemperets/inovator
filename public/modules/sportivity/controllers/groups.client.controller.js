@@ -111,11 +111,22 @@ angular.module('sportivity').controller('GroupController', ['$scope', '$location
 
 		$scope.getGroupsClass = function(group){
 			var clazz = {'otherGroupsHome':true};
-			if(group.user._id == $scope.authentication.user._id){
+			if(group.user !== undefined && $scope.authentication.user != undefined && group.user._id == $scope.authentication.user._id){
 				clazz = {'myGroupsHome':true}
 			}
 			return clazz;
 		};
+
+    $scope.showCheck = function(item){
+      if(item){
+        for (var i = 0; i < item.members.length; i++) {
+          if(item.members[i]._id == $scope.authentication.user._id){
+            return true;
+          }
+        }
+      }
+      return false;
+    }
   }
 ]);
 
