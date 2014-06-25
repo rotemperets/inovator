@@ -15,14 +15,14 @@
 							ng-repeat="activity in activities | orderBy: '-eventDate'">
 						<span style="" class="name"><b>{{activity.title}}</b></span>
 						<hr style="border-top:solid 1px #000000;margin: 5px;"/>
-						<span class="description"><b>When:</b> {{activity.eventDate | date:'MMM dd - h:mma'}}</span>
+						<span class=""><b>When:</b> {{activity.eventDate | date:'MMM dd - h:mma'}}</span>
 						</br>
-            <span class="description"><b>Where:</b> {{activity.location}}</span>
-            </br>
-            <span class="description"><b>What:</b> {{activity.content}}</span>
-						<br/>
+						<span class=" "><b>Where:</b> {{activity.location}}</span>
+						</br>
+						<div style="max-height: 68px; max-width: 180px;overflow: hidden;text-overflow: ellipsis;">
+							<span class=""><b>What:</b> {{activity.content}}</span>
+						</div>
 						<b>Members:</b>  <span class="badge">{{activity.members.length}}</span>
-
           </li>
         </ul>
       </div>
@@ -46,8 +46,9 @@
 					<li ng-repeat="group in groups" data-ng-class="getGroupsClass(group)" ng-click="go('/groups', group._id)">
 						<span class="name"><b>{{group.title}}</b></span>
 						<hr style="border-top:solid 1px #000000;margin: 5px;"/>
-						<span class="description">{{group.content}}</span>
-						<br/>
+						<div style="max-height: 68px; max-width: 180px;overflow: hidden;text-overflow: ellipsis;">
+							<span>{{group.content}}</span>
+						</div>
 						<b>Members:</b>  <span class="badge">{{group.members.length}}</span>
           </li>
         </ul>
