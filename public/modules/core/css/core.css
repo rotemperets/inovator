@@ -155,3 +155,15 @@ body {
   text-align: left;
   width: 100%;
 }
+
+.logo{
+  background: url(../img/d01c1e2b.Logo.png);
+  width: 87px;
+  height: 23px;
+  top: 10px;
+  display: block;
+  float: left;
+  margin: 10px;
+  margin-left: 0;
+  padding-right: 3px;
+}
